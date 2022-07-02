@@ -106,7 +106,7 @@ for i in b:
             video = video["list"]["vlist"][0]["created"]
             if video>b[i]['video']:
                 c['video']='true'
-                c['cover']=image
+                #c['cover']=image
                 c['video_url']=f"{uname} 投稿了新视频啦\n标题：{video1['title']}\n Bvid：{video1['bvid']}\n https://www.bilibili.com/video/{video1['bvid']}"
                 c['gid']=b[i]['gid']
                 b[i]['video']=video
@@ -139,7 +139,7 @@ for i in b:
             b[i]['time']=live_status
         if b[i]['time']=='0' and live_status == '1':
             c['gid']=b[i]['gid']
-            c['cover']=cover
+            #c['cover']=cover
             c['info']=f"{uname} 开播啦！\n标题：{title}\n直链：https://live.bilibili.com/{uid}"
         if len(c)>0:
             a[i]=c

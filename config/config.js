@@ -69,13 +69,13 @@ schedule.scheduleJob("0 0/30 * * * ?",async ()=>{
         var data =Object.keys(list)
         for (var key of data){
           if (list[key]?.video){
-            Bot.pickGroup(list[key].gid).sendMsg(list[key].cover,list[key].video_url);
+            Bot.pickGroup(list[key].gid).sendMsg(list[key].video_url);
             sleep(10000);
           }else if(list[key]?.dynamic){
             Bot.pickGroup(list[key].gid).sendMsg(list[key].dynamic_url);
             sleep(10000);
           }else{
-            Bot.pickGroup(list[key].gid).sendMsg(list[key].cover,list[key].info);
+            Bot.pickGroup(list[key].gid).sendMsg(list[key].info);
             sleep(10000);
         }};
         return;

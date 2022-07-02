@@ -10,6 +10,9 @@ import {
   tarot,
   tarot1  
 } from "./apps/huangli.js";
+import {
+  huanying
+} from "./apps/huanying.js";
 import * as note from "./apps/note.js";
 import { currentVersion,changelogs } from "./apps/Updatelog.js";
 import {
@@ -43,6 +46,7 @@ import {
 import lodash from "lodash";
 export {
   huangli,
+  huanying,
   qiuqian,
   jieqian,
   food,
@@ -80,6 +84,10 @@ let rule = {
   profileCfg: {
     reg: "^#py设置(.*)$",
     describe: "【#py设置签到开启|关闭】开启关闭py功能",
+  },
+  huanying: {
+    reg: "幻影$",
+    describe: "【幻影】隐藏图片",
   },
   whitelistdelete: {
     reg: "^#推送移除(.*)$",
