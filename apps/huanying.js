@@ -6,6 +6,10 @@ const require = createRequire(import.meta.url);
 const _path = process.cwd();
 
 export async function huanying(e) {
+	if (fs.existsSync(`./plugins/python-plugin/data/cfg.json`)) {
+    	let cfg = JSON.parse(fs.readFileSync(`./plugins/python-plugin/data/cfg.json`, "utf8"));
+    	if(cfg['幻影']=='关闭'){return false;}
+  	}
 	if (!e.img) {return}
 	let img=e.img
 	if (img.length<1) {return}

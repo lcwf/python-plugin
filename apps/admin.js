@@ -92,7 +92,8 @@ export async function profileCfg(e) {
           "表情": "开启",
           "订阅": "开启",
           "签到": "开启",
-          "扫黄": "开启",
+          "戳一戳": "开启",
+          "幻影": "开启",
           "人生重来": "开启",
           "remake":"开启",
           "自动更新失败推送":"关闭",
@@ -107,6 +108,11 @@ export async function profileCfg(e) {
          fs.writeFileSync("./plugins/python-plugin/data/cfg.json", JSON.stringify(cfg, null, "\t"));
     }else{
       cfg = JSON.parse(fs.readFileSync(`./plugins/python-plugin/data/cfg.json`, "utf8"));
+      var data1 =Object.keys(cfg)
+      for (var key of data1){
+        cfg1[key]=cfg[key]
+      }
+      cfg=cfg1
     }
     var data =Object.keys(cfg)
     if(e.msg.includes('菜单')){

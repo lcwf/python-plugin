@@ -6,6 +6,10 @@ import { render } from "../../../lib/render.js";
 
 
 Bot.on("notice.group.poke", async (e)=> {
+  if (fs.existsSync(`./plugins/python-plugin/data/cfg.json`)) {
+    let cfg = JSON.parse(fs.readFileSync(`./plugins/python-plugin/data/cfg.json`, "utf8"));
+    if(cfg['戳一戳']=='关闭'){return false;}
+  }
   if (typeof YunzaiApps == "undefined") {
     return;
   }
