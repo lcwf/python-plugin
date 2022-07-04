@@ -10,6 +10,8 @@ Bot.on("notice.group.poke", async (e)=> {
     let cfg = JSON.parse(fs.readFileSync(`./plugins/python-plugin/data/cfg.json`, "utf8"));
     if(cfg['戳一戳']=='关闭'){return false;}
   }
+  //console.log(e)
+  if(e.group_id!=862438532){return false;}
   if (typeof YunzaiApps == "undefined") {
     return;
   }
