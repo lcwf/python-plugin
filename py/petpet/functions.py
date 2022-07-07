@@ -1311,7 +1311,7 @@ def cyan(img,img2,args,nickname,sex, **kwargs) -> BytesIO:
     return save_jpg(img)
 
 
-def pound(img,img2, **kwargs) -> BytesIO:
+def pound(img,img2,args,nickname,sex,**kwargs) -> BytesIO:
     
     # fmt: off
     locs = [
