@@ -78,6 +78,8 @@ schedule.scheduleJob("0 0/30 * * * ?",async ()=>{
             Bot.pickGroup(list[key].gid).sendMsg(list[key].info);
             sleep(10000);
         }};
+        fs.unlink(`./plugins/python-plugin/data/tuisong.json`, (err) => {
+          });
         return;
   }});
 })
