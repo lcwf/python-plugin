@@ -11,7 +11,7 @@ Bot.on("notice.group.poke", async (e)=> {
     if(cfg['戳一戳']=='关闭'){return false;}
   }
   //console.log(e)
-  //if(e.group_id!=862438532){return false;}
+  if(e.group_id!=862438532){return false;}
   if (typeof YunzaiApps == "undefined") {
     return;
   }
@@ -65,6 +65,7 @@ Bot.on("notice.group.poke", async (e)=> {
     await redis.incr(key);
     redis.expire(key, 120);
   }
+  //e.reply('https://genshin.honeyhunterworld.com/db/item/i_22/?lang=CHS')
   e.msg='体力'
   await Note(e,{render});
 

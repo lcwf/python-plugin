@@ -19,7 +19,7 @@ if not os.path.exists(FILE_PATH+'/update.json'):
         update['py']=py
         yunzai=dict()
         yunzai['date']=pcr_now
-        yunzai['url']='https://gitee.com/Le-niao/Yunzai-Bot'
+        yunzai['url']='https://gitee.com/yoimiya-kokomi/Yunzai-Bot'
         update['yunzai']=yunzai
         miaomiao=dict()
         miaomiao['date']=pcr_now
@@ -32,7 +32,7 @@ if not os.path.exists(FILE_PATH+'/update.json'):
 with open(FILE_PATH+'/update.json','r',encoding="UTF-8")as f:
     update=json.load(f)
     f.close()
-        
+update['yunzai']['url']=='https://gitee.com/yoimiya-kokomi/Yunzai-Bot'
 for i in update:
     req=requests.get(update[i]['url'])
     text=req.text

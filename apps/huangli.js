@@ -15,7 +15,7 @@ export async function huangli(e) {
   }
   let command = "python ./plugins/python-plugin/py/almanac.py";
   var exec = require('child_process').exec;
-  //e.group.fs.upload(`${_path}/plugins/python-plugin/resrouces/123.py`)
+  //e.group.fs.upload(`${_path}/data/data.rar`)
   var ls = exec(command, function (error, stdout, stderr){
     if (error) {
       console.log("失败！\nError code: "+error.code+"\n"+error.stack);
