@@ -118,18 +118,18 @@ def load_event_cn():
                     item['start_time'], r"%Y-%m-%d %H:%M:%S")
                 end_time = datetime.strptime(
                     item['end_time'], r"%Y-%m-%d %H:%M:%S")
-                #if '一斗' in item['title']:
-                #  print(event_detail[item["ann_id"]]['content'])
+                if '万叶' in item['title']:
+                    print(event_detail[item["ann_id"]]['content'])
                 # 从正文中查找开始时间
                 if event_detail[item["ann_id"]]:
                     content = event_detail[item["ann_id"]]['content']
                     searchObj = re.search(
                         r'(\d+)\/(\d+)\/(\d+)\s(\d+):(\d+):(\d+)', content, re.M | re.I)
                     
-                    if '2.7版本更新后' in content:
+                    if '2.8版本更新后' in content:
                         curmon = datetime.today()
                         start_time = datetime.strptime(
-                            curmon.strftime("%Y-5-31 11:00"), r"%Y-%m-%d %H:%M")
+                            curmon.strftime("%Y-7-13 11:00"), r"%Y-%m-%d %H:%M")
                     
                     try:
                         datelist = searchObj.groups()  # ('2021', '9', '17')
