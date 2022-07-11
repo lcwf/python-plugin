@@ -41,9 +41,11 @@ for i in update:
     date2=datetime.strptime(update[i]['date'],"%Y-%m-%d %H:%M")
     if date1>date2:
         print(i)
-    update[i]['date']=pcr_now
-    with open(FILE_PATH+'/update.json','w',encoding="UTF-8")as f:
-        json.dump(update,f,ensure_ascii=False,indent=2)
-        f.close()
+        update[i]['date']=pcr_now
+with open(FILE_PATH+'/update.json','w',encoding="UTF-8")as f:
+    json.dump(update,f,ensure_ascii=False,indent=2)
+    f.close()
+
+
 
 
