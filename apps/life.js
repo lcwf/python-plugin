@@ -1,7 +1,9 @@
 import { segment } from "oicq";
 import fetch from "node-fetch";
 import fs from "fs";
+import puppeteer from "puppeteer";
 import lodash from "lodash";
+import Common from "./Common.js";
 import {createRequire} from "module";
 //项目路径
 import { exec } from "child_process";
@@ -113,6 +115,9 @@ export async function life3(e) {
 }
 let NICKNAME=BotConfig.group.default.botAlias//机器人的名字
 export async function sign(e) {
+  if (!e.isGroup) {
+    return false;
+  }
   if (fs.existsSync(`./plugins/python-plugin/data/cfg.json`)) {
     let cfg = JSON.parse(fs.readFileSync(`./plugins/python-plugin/data/cfg.json`, "utf8"));
     if(cfg['签到']=='关闭'){return true;}
@@ -130,6 +135,7 @@ export async function sign(e) {
       let msg="输入错误"
       e.reply("输入错误")
     }else{
+
       let msg = [
         segment.image(`file:///${_path}/plugins/python-plugin/resrouces/today_card/${e.user_id}.png`),
         ];
@@ -138,7 +144,11 @@ export async function sign(e) {
   })
   return false;
 }
-export async function signlist(e) {
+export async function signlist(e,{render}) {
+  if (!e.isGroup) {
+    return false;
+  }
+  await finedData()
   if (fs.existsSync(`./plugins/python-plugin/data/cfg.json`)) {
     let cfg = JSON.parse(fs.readFileSync(`./plugins/python-plugin/data/cfg.json`, "utf8"));
     if(cfg['签到']=='关闭'){return true;}
@@ -149,15 +159,48 @@ export async function signlist(e) {
   var ls = exec(command, function (error, stdout, stderr){
     if (error) {
       console.log("失败！\nError code: "+error.code+"\n"+error.stack);
+      return true
     }else{
       if (stdout.trim()=='error'){
       e.reply("暂无签到信息")
-    }else{
-      let msg = [
+      return true
+    }}
+    
+  })
+  
+  //return await Common.render("today_card/haogan", {}, { e, render, scale: 1.2 })
+  const brow=await puppeteer.launch()
+  const page=await brow.newPage()
+  
+  await page.goto(`file:///${_path}/plugins/python-plugin/resrouces/today_card/haogan.html`,{waitUntil: 'load',timeout: 0})
+  await page.screenshot({path:`${_path}/plugins/python-plugin/resrouces/today_card/1.png`,fullPage:true})
+  await brow.close()
+    let msg = [
         segment.image(`file:///${_path}/plugins/python-plugin/resrouces/today_card/1.png`),
         ];
-      e.reply(msg)
-    }}
-  })
-  return false;
+    e.reply(msg)
+    return true
+}
+//清除不在群聊里用户
+async function finedData(){
+  let Blacklist = await Bot.gl //获取全部群
+  let datalist = {};
+  if (!fs.existsSync(`./plugins/python-plugin/data/sign.json`)) {
+        return
+      }
+  let signlist = JSON.parse(fs.readFileSync(`./plugins/python-plugin/data/sign.json`, "utf8"));
+  for (let key of Blacklist) {
+    let userlist = await Bot.pickGroup(key[0] * 1).getMemberMap();
+    // console.log(userlist)
+
+    for (let user of userlist) {
+      
+      let uId = signlist[user[0] * 1]
+      if (uId) {
+        datalist[user[0] * 1]=uId
+        }
+      }
+    }
+  fs.writeFileSync("./plugins/python-plugin/data/sign.json", JSON.stringify(datalist, null, "\t"));
+  return
 }

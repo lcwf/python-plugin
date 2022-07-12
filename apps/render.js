@@ -59,7 +59,7 @@ async function render1(app = "", type = "", data = {}, imgType = "jpeg") {
 async function doRender(app, type, data, imgType, renderCfg) {
 
   let { tplKey, tplFile, savePath, saveId } = renderCfg;
-
+  global.debugView=true
   if (global.debugView === "web-debug") {
     // debug下保存当前页面的渲染数据，方便模板编写与调试
     // 由于只用于调试，开发者只关注自己当时开发的文件即可，暂不考虑app及plugin的命名冲突
@@ -95,7 +95,7 @@ async function doRender(app, type, data, imgType, renderCfg) {
     shoting.push(saveId);
     //图片渲染
     const page = await browser.newPage();
-    await page.goto("file://" + savePath);
+    await page.goto("file://" + savePath,{waitUntil: 'load',timeout: 0});
     let body = await page.$("#container");
     let randData = { 
       type: imgType,
