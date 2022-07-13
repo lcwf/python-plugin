@@ -1,0 +1,25 @@
+{{extend defaultLayout}}
+{{block 'css'}}
+<link rel="stylesheet" type="text/css" href="{{_res_path}}/admin/index.css"/>
+{{/block}}
+{{block 'main'}}
+
+<div class="info_box">
+  <div class="head-box type{{bgType}}">
+    <div class="title">py管理面板</div>
+  </div>
+</div>
+<div class="cfg-box">
+  <div class="cfg-group">所有功能</div>
+  <ul class="cfg-ul">
+    {{each cfg help}}
+    {{each datalist data}}
+    <li class="cfg-li">
+      <div class="cfg-line">{{data}}</div>
+      <div class="cfg-status status-off">{{help}}</div>
+    </li>
+    {{/each}}
+    {{/each}}
+  </ul>
+</div>
+{{/block}}

@@ -1,6 +1,7 @@
 import { segment } from "oicq";
 import { createRequire } from "module";
 import fs from "fs";
+import Common from "./Common.js";
 import { exec } from "child_process";
 const require = createRequire(import.meta.url);
 const _path = process.cwd();
@@ -77,7 +78,7 @@ export async function python_update(e) {
   });
   return true;
 }
-export async function profileCfg(e) {
+export async function profileCfg(e,{render}) {
   if (!await checkAuth(e)) {
     return true;
   }
@@ -114,19 +115,30 @@ export async function profileCfg(e) {
       }
       cfg=cfg1
     }
-    var data =Object.keys(cfg)
-    if(e.msg.includes('菜单')){
-      let msg=[]
-      for(var key of data){
-        msg.push(key+':'+cfg[key])
-      }
-      e.reply(msg.join(',').replace(/,/g,'\n'))
-    }
+    
   
   //(好友|群|群聊|陌生人)?\s*(\d*)\s*
   let regRet = /py设置(.*)(开启|关闭)$/.exec(e.msg);
   
-  if (!regRet) {
+  if (!regRet|e.msg.includes('菜单')) {
+    var data =Object.keys(cfg)
+    let datalist=[]
+    for (var i of data){
+      datalist.push(" #py设置"+i+" + 开启/关闭")
+    }
+    return await Common.render("admin/index", {
+      cfg,
+      datalist,
+    }, {
+      e,
+      render,
+      scale: 1.4
+    });
+    let msg=[]
+      for(var key of data){
+        msg.push(key+':'+cfg[key])
+      }
+      e.reply(msg.join(',').replace(/,/g,'\n'))
     return;
   }
   let [, target1, actionType] = regRet;
