@@ -47,8 +47,8 @@ if os.path.exists(FILE_PATH+'/1.png'):
     os.remove(FILE_PATH+'/1.png')
 if os.path.exists(FILE_PATH+'/1.jpg'):
     os.remove(FILE_PATH+'/1.jpg')
-if os.path.exists(FILE_PATH+'/tarot/torot.png'):
-    os.remove(FILE_PATH+'/tarot/torot.png')
+if os.path.exists(FILE_PATH+'/tarot/torot.jpg'):
+    os.remove(FILE_PATH+'/tarot/torot.jpg')
 if os.path.exists(FILE_PATH+'/images/123.jpeg'):
     os.remove(FILE_PATH+'/images/123.jpeg')
 if os.path.exists(FILE_PATH+'/images/123.gif'):
