@@ -49,10 +49,10 @@ if os.path.exists(FILE_PATH+'/1.jpg'):
     os.remove(FILE_PATH+'/1.jpg')
 if os.path.exists(FILE_PATH+'/tarot/torot.png'):
     os.remove(FILE_PATH+'/tarot/torot.png')
-if os.path.exists(FILE_PATH+'/images/1.jpeg'):
-    os.remove(FILE_PATH+'/images/1.jpeg')
-if os.path.exists(FILE_PATH+'/images/1.gif'):
-    os.remove(FILE_PATH+'/images/1.gif')
+if os.path.exists(FILE_PATH+'/images/123.jpeg'):
+    os.remove(FILE_PATH+'/images/123.jpeg')
+if os.path.exists(FILE_PATH+'/images/123.gif'):
+    os.remove(FILE_PATH+'/images/123.gif')
 DATA_PATH=os.path.join(FILE_PATH1,"../data")
 with open(DATA_PATH+'/qianwen.json','w') as g:
     a=json.dumps(a)
