@@ -119,13 +119,13 @@ export async function profileCfg(e,{render}) {
   
   //(好友|群|群聊|陌生人)?\s*(\d*)\s*
   let regRet = /py设置(.*)(开启|关闭)$/.exec(e.msg);
-  
+  var data =Object.keys(cfg)
   if (!regRet|e.msg.includes('菜单')) {
-    var data =Object.keys(cfg)
+    
     let datalist=[]
     for (var i of data){
       let data2=[]
-      data2.push(" #py设置"+i+" + 开启/关闭")
+      data2.push("#py设置"+i+"+开启/关闭")
       data2.push(cfg[i])
       datalist.push(data2)
     }
