@@ -12,13 +12,11 @@
 <div class="cfg-box">
   <div class="cfg-group">所有功能</div>
   <ul class="cfg-ul">
-    {{each cfg help}}
     {{each datalist data}}
     <li class="cfg-li">
-      <div class="cfg-line">{{data}}</div>
-      <div class="cfg-status status-off">{{help}}</div>
+      <div class="cfg-line">{{data[0]}}</div>
+      <div class="cfg-status status-off">{{data[1]}}</div>
     </li>
-    {{/each}}
     {{/each}}
   </ul>
 </div>

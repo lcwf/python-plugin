@@ -17,6 +17,8 @@ if not os.path.exists(FILE_PATH+'/life1'):
     os.makedirs(FILE_PATH+'/life1')
 if not os.path.exists(FILE_PATH+'/today_card'):
     os.makedirs(FILE_PATH+'/today_card')
+if not os.path.exists(FILE_PATH+'/atifacts'):
+    os.makedirs(FILE_PATH+'/atifacts')
 path=os.listdir(FILE_PATH+'/jieqian')
 for i in path:
     os.remove(FILE_PATH+'/jieqian/'+i)
@@ -28,8 +30,6 @@ path1=os.listdir(FILE_PATH+'/enemies_info')
 for j in path1:
     #清理绘制好的原魔信息
     os.remove(FILE_PATH+'/enemies_info/'+j)
-
-
 path2=os.listdir(FILE_PATH+'/qianwen')
 for k in path2:
     os.remove(FILE_PATH+'/qianwen/'+k)
@@ -43,6 +43,16 @@ path4=os.listdir(FILE_PATH+'/life1')
 for k in path4:
     os.remove(FILE_PATH+'/life1/'+k)
 a=dict()
+if os.path.exists(FILE_PATH+'/1.png'):
+    os.remove(FILE_PATH+'/1.png')
+if os.path.exists(FILE_PATH+'/1.jpg'):
+    os.remove(FILE_PATH+'/1.jpg')
+if os.path.exists(FILE_PATH+'/tarot/torot.png'):
+    os.remove(FILE_PATH+'/tarot/torot.png')
+if os.path.exists(FILE_PATH+'/images/1.jpeg'):
+    os.remove(FILE_PATH+'/images/1.jpeg')
+if os.path.exists(FILE_PATH+'/images/1.gif'):
+    os.remove(FILE_PATH+'/images/1.gif')
 DATA_PATH=os.path.join(FILE_PATH1,"../data")
 with open(DATA_PATH+'/qianwen.json','w') as g:
     a=json.dumps(a)
