@@ -13,7 +13,6 @@ export async function huanying(e) {
 	if (!e.img) {return}
 	let img=e.img
 	if (img.length<1) {return}
-	console.log(img)
   let command = "python ./plugins/python-plugin/py/huanying.py "+img[0]+' '+img[1];
   var exec = require('child_process').exec;
   //e.group.fs.upload(`${_path}/plugins/python-plugin/resrouces/123.py`)

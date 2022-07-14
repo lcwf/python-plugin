@@ -30,7 +30,7 @@ elif os.path.getsize(DATA_PATH/dataname)>0:
     theme=[ThemeType.LIGHT,ThemeType.DARK,ThemeType.CHALK,ThemeType.ESSOS,ThemeType.INFOGRAPHIC,
            ThemeType.MACARONS,ThemeType.PURPLE_PASSION,ThemeType.ROMA,ThemeType.ROMANTIC,
            ThemeType.SHINE,ThemeType.VINTAGE,ThemeType.WALDEN,ThemeType.WESTEROS,ThemeType.WONDERLAND]
-    I=random.randint(0,len(theme))
+    I=random.randint(0,len(theme)-1)
     chart=Bar(init_opts=opts.InitOpts(theme=theme[I]))
     chart.add_xaxis(x)
     chart.add_yaxis('好感',y)

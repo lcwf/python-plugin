@@ -125,7 +125,7 @@ export async function profileCfg(e,{render}) {
     let datalist=[]
     for (var i of data){
       let data2=[]
-      data2.push("#py设置"+i+"+开启/关闭")
+      data2.push("py设置"+i+"+开启/关闭")
       data2.push(cfg[i])
       datalist.push(data2)
     }

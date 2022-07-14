@@ -14,6 +14,9 @@ import {
   huanying
 } from "./apps/huanying.js";
 import * as note from "./apps/note.js";
+import { 
+  rule1,
+  examples} from "./apps/examples.js"
 import { currentVersion,changelogs } from "./apps/Updatelog.js";
 import {
   biaoQing,
@@ -64,6 +67,8 @@ export {
   qingli,
   config,
   sign,
+  rule1,
+  examples,
   signlist,
   cailiao,
   tarot,
@@ -82,8 +87,8 @@ let rule = {
     describe: "【#黄历|日历】今日迷信", //【命令】功能说明
   },
   profileCfg: {
-    reg: "^#py设置(.*)$",
-    describe: "【#py设置签到开启|关闭】开启关闭py功能",
+    reg: "^#?(py|Py|PY)设置(.*)$",
+    describe: "【py设置签到开启|关闭】开启关闭py功能",
   },
   huanying: {
     reg: "幻影$",
@@ -208,7 +213,8 @@ let rule = {
   pybanben: {
     reg: "^(py|#py)版本$", //匹配消息正则，命令正则
     describe: "【py版本】获取版本日志", //【命令】功能说明
-  }
+  },
+  ...rule1
 };
 let help_list=[{
   group: "自动执行",
