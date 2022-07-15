@@ -201,6 +201,7 @@ export async function cailiao(e) {
            
       }else{
      let msg = [
+          stdout,
           segment.image(`file:///${_path}/plugins/python-plugin/resrouces/cailiaodian/${msg2}.jpg`),
           ];
         e.reply(msg)

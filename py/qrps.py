@@ -174,7 +174,7 @@ def up_map():
     CENTER = [origin[0] - x_start, origin[1] - y_start]
     x = int(x_end - x_start)
     y = int(y_end - y_start)
-    print(x,y)
+    
     MAP_ICON = Image.new("RGB",(x,y))
     x_offset = 0
     for i in map_url_list:
@@ -389,7 +389,7 @@ if __name__=="__main__":
             a=get_resource_map_mes(command)
             
             b.append(map_id)
-            if a=='empty'and len(b)<3:
+            if a=='empty'and len(b)<4:
                 for i in map_list:
                     if i not in b:
                         map_id=i
