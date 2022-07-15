@@ -147,7 +147,7 @@ def up_map():
     global CENTER
     global MAP_ICON
     #logger.info(f"正在更新地图数据")
-    map_info = download_json(MAP_URL)
+    map_info = download_json(MAP_URL) 
     map_info = map_info["data"]["info"]["detail"]
     map_info = json.loads(map_info)
 
@@ -158,6 +158,7 @@ def up_map():
     y_start = map_info['total_size'][1]
     x_end = 0
     y_end = 0
+    
     for resource_point in data["all_resource_point_list"]:
         x_pos = resource_point["x_pos"] + origin[0]
         y_pos = resource_point["y_pos"] + origin[1]
@@ -165,12 +166,12 @@ def up_map():
         y_start = min(y_start,y_pos)
         x_end = max(x_end,x_pos)
         y_end = max(y_end,y_pos)
-
+    
     x_start -= 200
     y_start -= 200
     x_end += 200
     y_end += 200
-
+    
     CENTER = [origin[0] - x_start, origin[1] - y_start]
     x = int(x_end - x_start)
     y = int(y_end - y_start)
@@ -180,10 +181,36 @@ def up_map():
     for i in map_url_list:
         map_url = i["url"]
         map_icon = download_icon(map_url)
+        
         MAP_ICON.paste(map_icon,
                        (int(-x_start) + x_offset, int(-y_start)))
         x_offset += map_icon.size[0]
+    if map_id=='12':
+        map_url='https://api-takumi.mihoyo.com/common/map_user/ys_obc/v1/map/group/info?map_id=12&app_sn=ys_obc&lang=zh-cn'
+        map_info = download_json(map_url)
+        map_list=map_info["data"]["list"]
+        with open('123.txt','w')as f:
+            f.write(str(map_list))
+            f.close()
+        for i in range(len(map_list)):
+            map_mid=map_list[i]['layers'][0]['map_id']
+            #size=map_list[i]['latlng']
+            url= "https://waf-api-takumi.mihoyo.com/common/map_user/ys_obc/v1/map/info?map_id={}&app_sn=ys_obc&lang=zh-cn".format(map_mid)
+            map_info=download_json(url)
+            map_info = map_info["data"]["info"]["detail"]
+            map_info = json.loads(map_info)
 
+            map_url_list = map_info['slices'][0][0]['url']
+            #print(map_url_list)
+            origin = map_info["origin"]
+            #position=map_list[i]['layers'][0]['bounds']
+            #size=[]
+            #size.append(position[])
+            map_icon = download_icon(map_url_list)
+            
+            #map_icon.resize(size)int(-x_start) ,int(-y_start)
+            MAP_ICON.paste(map_icon,(int(-x_start),int(-y_start)),map_icon)
+    #MAP_ICON.save('1.png')
     #logger.info(f"地图数据更新完成")
 
 
@@ -377,7 +404,8 @@ def draw_help():
 if __name__=="__main__":
     map_list=['2','7','9','12']
     POINT_LIST_URL = 'https://api-static.mihoyo.com/common/blackboard/ys_obc/v1/map/point/list?map_id={}&app_sn=ys_obc'.format(map_id)
-    MAP_URL        = "https://api-static.mihoyo.com/common/map_user/ys_obc/v1/map/info?map_id={}&app_sn=ys_obc&lang=zh-cn".format(map_id)
+    #MAP_URL= "https://api-static.mihoyo.com/common/map_user/ys_obc/v1/map/info?map_id={}&app_sn=ys_obc&lang=zh-cn".format(map_id)
+    MAP_URL = "https://waf-api-takumi.mihoyo.com/common/map_user/ys_obc/v1/map/info?map_id={}&app_sn=ys_obc&lang=zh-cn".format(map_id)
     if command=='菜单':
         draw_help()
         exit()
