@@ -7,7 +7,7 @@ const _path = process.cwd();
 //优先级统一50，匹配规则卸载rule1内即可
 export const rule1 = {
   examples: {
-    reg: "测试", //匹配消息正则，命令正则
+    reg: "#测试", //匹配消息正则，命令正则
     describe: "测试", //【命令】功能说明，菜单内会自动添加
   },
 }
@@ -17,7 +17,7 @@ export async function examples(e) {
 	//去除非法字符，放置命令注入
 	let msg =e.msg.replace(/#|\;|cat|tac| |[0-9]|\\$|\*|>|more|less|net|head|sort|tail|sed|cut|awk|strings|od|curl|\`|\\%|\\&|\||/g, "");
 	
-	console.log(typeof(e))
+	console.log(e)
 	let a=e.toString()
 	console.log(a)
 	//调用py脚本，并传递参数，每个参数用空格隔开。

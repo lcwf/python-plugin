@@ -174,6 +174,7 @@ def up_map():
     CENTER = [origin[0] - x_start, origin[1] - y_start]
     x = int(x_end - x_start)
     y = int(y_end - y_start)
+    print(x,y)
     MAP_ICON = Image.new("RGB",(x,y))
     x_offset = 0
     for i in map_url_list:
@@ -374,7 +375,7 @@ def draw_help():
     bg1.save(CAILIAODIAN_PATH+'/菜单.jpg')
 
 if __name__=="__main__":
-    map_list=['2','7','9']
+    map_list=['2','7','9','12']
     POINT_LIST_URL = 'https://api-static.mihoyo.com/common/blackboard/ys_obc/v1/map/point/list?map_id={}&app_sn=ys_obc'.format(map_id)
     MAP_URL        = "https://api-static.mihoyo.com/common/map_user/ys_obc/v1/map/info?map_id={}&app_sn=ys_obc&lang=zh-cn".format(map_id)
     if command=='菜单':
@@ -386,6 +387,7 @@ if __name__=="__main__":
         while True:
             
             a=get_resource_map_mes(command)
+            
             b.append(map_id)
             if a=='empty'and len(b)<3:
                 for i in map_list:

@@ -187,8 +187,8 @@ export async function cailiao(e) {
     if(cfg['在哪里']=='关闭'){return false;}
   }
   let msg1 =e.msg.replace(/#|在|哪|里|有|\;|cat|tac| |[0-9]|\\$|\*|>|more|less|net|head|sort|tail|sed|cut|awk|strings|od|curl|\`|\\%|\\&|\||/g, "");
-  let n= msg1.match('渊下宫')?7:msg1.match('层岩')?9:2;
-  let msg2=(n==7)?msg1.replace(/渊下宫/,''):msg1.replace(/层岩/,'')
+  let n= msg1.match('渊下宫')?7:msg1.match('层岩')?9:(msg1.match('海岛')||msg1.match('金苹果'))?12:2;
+  let msg2=(n==7)?msg1.replace(/渊下宫/,''):(n==12)?(msg1.replace(/海岛/,'').replace(/金苹果/,'')):msg1.replace(/层岩/,'')
   if (e.msg.match('菜单')) msg2='菜单';
   let command = "python ./plugins/python-plugin/py/qrps.py "+msg2+' '+n;
   var exec = require('child_process').exec;
