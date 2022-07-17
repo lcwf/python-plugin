@@ -2,6 +2,7 @@ import fs from 'node:fs'
 //import {exec} from "child_process";
 import base from './base.js'
 import {createRequire} from "module";
+import PluginsLoader from '../../../lib/plugins/loader.js'
 const require = createRequire(import.meta.url);
 
 export default class exepy{
@@ -10,6 +11,7 @@ export default class exepy{
     	this.userId = e?.user_id
     	this._path = process.cwd().replace(/\\/g, '/')
 	    this.model = 'exepy'
+	    this.plugins = PluginsLoader
   	}
   	async sleep(ms) {
   		return new Promise((resolve) => setTimeout(resolve, ms));

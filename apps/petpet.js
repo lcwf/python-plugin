@@ -132,7 +132,8 @@ export class petpet extends plugin {
       rule: [
         {
           reg: "", //匹配消息正则，命令正则
-          fnc: 'biaoqing'
+          fnc: 'biaoqing',
+          des: "【爬】头像表情包", //【命令】功能说明
         }
       ]
     })

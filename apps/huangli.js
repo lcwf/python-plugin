@@ -16,7 +16,8 @@ export class huangli extends plugin {
       rule: [
         {
           reg: "^#.*(在哪|在哪里|哪有|哪里有)|(在哪里菜单)$", //匹配消息正则，命令正则
-          fnc: 'cailiao'
+          fnc: 'cailiao',
+          des:"【材料名在哪|在哪里|哪有|哪里有】返回一张资源地图"
         }
       ]
     })
