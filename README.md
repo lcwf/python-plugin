@@ -125,9 +125,10 @@ Yunzai-Bot插件包，由js调用python实现
 1.功能仅限内部交流和小范围使用，禁止商用
 2.图片素材来源于网络，如有侵权，请联系删除
 
-#其他
-[Yunzai-Bot](https://github.com/Le-niao/Yunzai-Bot)
-[Miao-Plugun](https://github.com/yoimiya-kokomi/miao-plugin)[gitee](https://gitee.com/yoimiya-kokomi/miao-plugin)
-[圣遗物，食物信息](https://www.minigg.cn/)
-#我的QQ群：862438532
-#Yunzai-Bot QQ群聊:213938015
+#### 其他
+* [Yunzai-Bot](https://github.com/Le-niao/Yunzai-Bot)   
+* [Miao-Plugin](https://github.com/yoimiya-kokomi/miao-plugin)    [gitee](https://gitee.com/yoimiya-kokomi/miao-plugin)
+* [圣遗物，食物信息](https://www.minigg.cn/)
+* 我的QQ群：862438532
+* Yunzai-Bot QQ群聊:213938015
+* [Yunzai插件库](https://github.com/HiArcadia/Yunzai-Bot-plugins-index)
